@@ -30,7 +30,7 @@ export default function Home() {
       return;
     }
     axios
-      .post(`${apiUrl}/users`, data)
+      .post(`${apiUrl}/user`, data)
       .then((res) => {
         setAtualiza(!atualiza);
         setLoading(false);
