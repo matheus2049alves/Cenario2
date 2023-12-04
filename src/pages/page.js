@@ -25,28 +25,19 @@ export default function Home() {
     };
     setLoading(true);
     if (data.name === "") {
-      alert("Preencha todos os campos");
+      alert("Campo vazio!");
       setLoading(false);
       return;
     }
     axios
-      .post(`${apiUrl}/user`, data)
-      .then((response) => {
-        console.log(response.data);
-        alert("Usuário cadastrado com sucesso!");
+      .post(`${apiUrl}/users`, data)
+      .then((res) => {
         setAtualiza(!atualiza);
         setLoading(false);
       })
-      .catch((error) => {
-        console.log(error);
-        if (error.response.status === 422) {
-          alert("Nome já cadastrado!");
-          setLoading(false);
-        }
-        if (error.response.status === 500) {
-          alert("Erro no servidor!");
-          setLoading(false);
-        }
+      .catch((err) => {
+        console.log(err);
+        setLoading(false);
       });
   }
 
@@ -79,7 +70,7 @@ export default function Home() {
       .catch((error) => {
         console.log(error);
         if (error.response.status === 404){
-          alert("Usuário não encontrado!");
+          alert("Usuários não encontrados!");
         }
         setLoading(false);
       });
