@@ -54,7 +54,9 @@ export default function Home() {
       })
       .catch((error) => {
         console.log(error);
-        alert("Usuário não encontrado!");
+        if (error.response.status === 404){
+          alert("Usuário não encontrado!");
+        }
         setLoading(false);
       });
   }
@@ -69,6 +71,9 @@ export default function Home() {
       })
       .catch((error) => {
         console.log(error);
+        if (error.response.status === 404){
+          alert("Usuário não encontrado!");
+        }
         setLoading(false);
       });
   }
