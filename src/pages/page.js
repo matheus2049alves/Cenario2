@@ -124,8 +124,8 @@ export default function Home() {
           <div className={styles.containerItems}>
             <p className={styles.list}>Resultado:</p>
             {users.length > 0 ? (
-              users.map((item, index) => (
-                <div className={styles.item} key={index}>
+              users.map((item) => (
+                <div className={styles.item} key={item.id}>
                   {item.nome}
                 </div>
               ))
