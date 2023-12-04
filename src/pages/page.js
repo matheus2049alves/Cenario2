@@ -20,10 +20,17 @@ export default function Home() {
   }
 
   function include() {
-    if (name === "") return alert("Digite um nome!");
+    const data = {
+      name: name,
+    };
     setLoading(true);
+    if (data.name === "") {
+      alert("Preencha todos os campos");
+      setLoading(false);
+      return;
+    }
     axios
-      .post(`${apiUrl}/user`, { name: name })
+      .post(`${apiUrl}/user`, data)
       .then((response) => {
         console.log(response.data);
         alert("Usuário cadastrado com sucesso!");
