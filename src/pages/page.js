@@ -10,7 +10,7 @@ const apiUrl = "https://cenario2.onrender.com";
 // const apiUrl = process.env.API_URL;
 
 export default function Home() {
-  const [name, setName] = useState("");
+  const [nome, setName] = useState("");
   const [users, setUsers] = useState([]);
   const [atualiza, setAtualiza] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -21,10 +21,10 @@ export default function Home() {
 
   function include() {
     const data = {
-      name: name,
+      nome: nome,
     };
     setLoading(true);
-    if (data.name === "") {
+    if (data.nome === "") {
       alert("Campo vazio!");
       setLoading(false);
       return;
@@ -42,10 +42,10 @@ export default function Home() {
   }
 
   function find() {
-    if (name === "") return alert("Digite um nome!");
+    if (nome === "") return alert("Digite um nome!");
     setLoading(true);
     axios
-      .get(`${apiUrl}/user/${name}`)
+      .get(`${apiUrl}/user/${nome}`)
       .then((response) => {
         setUsers(response.data);
         setLoading(false);
@@ -105,7 +105,7 @@ export default function Home() {
                 className={styles.input}
                 type="text"
                 placeholder="Nome"
-                name="name"
+                name="nome"
                 onChange={changeInput}
               />
             </form>
